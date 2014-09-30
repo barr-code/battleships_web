@@ -1,8 +1,13 @@
-<form>
-<input type="text" name="player1">
-<input type="submit" value="Submit">
-</form>
-
-<% if @name %>
-  Welcome to Battleships.
+<% if @player1 %>
+  <h1>OK <%= @player1.name %> Deploy your Ships!</h1>
+<% else %>
+  <form action="/" method="post">
+    <input type="text" name="player1">
+    <input type="submit" value="Submit">
+  </form>
 <% end %>
+
+
+
+
+
