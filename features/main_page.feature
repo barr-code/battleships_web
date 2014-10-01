@@ -15,7 +15,12 @@ Scenario: Naming Player 2
   And click on "Submit"
   Then I go to a new "page" and see "Set Ships"
 
-Scenario: No player name!
-  Given some dick forgets to add their name in "player1"
+Scenario: No player1 name!
+  Given some twit forgets to add their name in "player1"
+  When they press "Submit"
+  Then I go back to the same page and see "try again"
+
+Scenario: No player2 name!
+  Given some twit forgets to add their name in "player2"
   When they press "Submit"
   Then I go back to the same page and see "try again"

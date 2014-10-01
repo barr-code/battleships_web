@@ -1,8 +1,8 @@
-<<<<<<< HEAD
 html {
-	margin: 0px;
+	  margin: 0px;
 		padding: 0px;
 		width: 100%;
+		color: #fff;
 	}
 
 body{
@@ -18,7 +18,6 @@ h1	{
 
 p {
 		color:white;
-
 }
 
 .main-header
@@ -57,11 +56,3 @@ input
 		text-transform: capitalize;
 		text-align: center;
 	}
-
-=======
-html{margin: 0px;padding: 0px;width: 100%;}
-body{padding:200px;background:#000066;color:#fff;}
-h1{font-family: 'Bowlby One SC', cursive;color:#fff;}
-.main-header{text-align: center;}
-input{font-size: 200%;margin:auto;}
->>>>>>> 1bd9fde3500ddfa5d88928b9eb61283b336ce377

@@ -1,1 +1,13 @@
-<header>Set Ships</header>
+<% if @player2 && @player2 != "" %>
+
+  <header>Set Ships</header>
+
+<% elsif @player2 == "" %>
+
+  <p>try again</p>
+  <form action="/setup" method="post">
+    <input type="text" name="player2" placeholder="give a name">
+    <input type="submit" value="Submit">
+  </form>
+
+<% end %>

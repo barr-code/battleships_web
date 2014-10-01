@@ -24,11 +24,11 @@ Then(/^I go to a new "(.*?)" and see "(.*?)"$/) do |route, pagetitle|
   expect(page).to have_content('Set Ships')
 end
 
-Given(/^some dick forgets to add their name in "(.*?)"$/) do |player1|
+Given(/^some twit forgets to add their name in "(.*?)"$/) do |player|
   visit '/'
 end
 
-When(/^they press "(.*?)"$/) do |arg1|
+When(/^they press "(.*?)"$/) do |action|
   click_on('Submit')
 end
 
