@@ -6,7 +6,7 @@ class Battleships < Sinatra::Base
 	
   attr_accessor :game, :player1
 	@game = Game.new
-  @player1 = Player.new
+  @player = Player.new
 
   set :views, Proc.new {File.join(root, '..', 'views')}
   set :public_folder, 'public'
@@ -16,7 +16,7 @@ class Battleships < Sinatra::Base
 	end
 
 	post '/' do
-    @player1.name = params[:player1]
+    @name = params[:player1]
     erb :index
 	end
 
