@@ -1,9 +1,22 @@
 <html>
+
 <head>
-  <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
-  <link href='http://fonts.googleapis.com/css?family=Bowlby+One+SC' rel='stylesheet' type='text/css'>
+
+  	<link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+  	<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400' rel='stylesheet' type='text/css'>
+
 </head>
+
 <body>
-<h1 class="main-header">Battleships</h1>
-<%= yield %>
+
+	<h1 class="main-header">BattleShips</h1>
+
+	<p class="synopsis">The classic two player game</p>
+
+	<%= yield %>
+
+	<p class="instruction">Enter your player name</p>
+
+
+
 </body>
