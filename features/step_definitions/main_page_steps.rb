@@ -13,3 +13,13 @@ end
 Then(/^I see "(.*?)" on the page$/) do |name|
   expect(page).to have_content(name)
 end
+
+Given(/^"(.*?)" has been created$/) do |player1|
+  visit '/'
+  fill_in(player1, with: "Victoria")
+  click_on('Submit')
+end
+
+Then(/^I go to a new "(.*?)" and see "(.*?)"$/) do |route, pagetitle|
+  expect(page).to have_content('Set Ships')
+end

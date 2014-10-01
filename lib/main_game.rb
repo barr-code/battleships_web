@@ -16,7 +16,7 @@ class Battleships < Sinatra::Base
 	end
 
 	post '/' do
-    @name = params[:player1]
+    @player1 = params[:player1]
     erb :index
 	end
 
