@@ -2,11 +2,11 @@
 <table>
   <% @board.each do |coord, cell| %>
     <% if coord.slice(1..coord.length) == "1" %>
-      <tr><td><%= coord %></td>
+      <tr><td><%= cell.hit? ? "*" : "~" %></td>
     <% elsif coord.slice(1..coord.length) == "10" %>
-      <td><%= coord %></td></tr>
+      <td><%= cell.hit? ? "*" : "~" %></td></tr>
     <% else %>
-      <td><%= coord %></td> 
+      <td><%= cell.hit? ? "*" : "~" %></td> 
     <% end %>
   <% end %>
 </table>     
