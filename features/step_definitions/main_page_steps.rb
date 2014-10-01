@@ -23,3 +23,15 @@ end
 Then(/^I go to a new "(.*?)" and see "(.*?)"$/) do |route, pagetitle|
   expect(page).to have_content('Set Ships')
 end
+
+Given(/^some dick forgets to add their name in "(.*?)"$/) do |player1|
+  visit '/'
+end
+
+When(/^they press "(.*?)"$/) do |arg1|
+  click_on('Submit')
+end
+
+Then(/^I go back to the same page and see "(.*?)"$/) do |prompt|
+  expect(page).to have_content('try again')
+end
