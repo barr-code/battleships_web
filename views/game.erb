@@ -1,0 +1,12 @@
+<h1>Player 1 Board</h1>
+<table>
+  <% @board.each do |coord, cell| %>
+    <% if coord.slice(1..coord.length) == "1" %>
+      <tr><td><%= coord %></td>
+    <% elsif coord.slice(1..coord.length) == "10" %>
+      <td><%= coord %></td></tr>
+    <% else %>
+      <td><%= coord %></td> 
+    <% end %>
+  <% end %>
+</table>     

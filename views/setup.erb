@@ -1,12 +1,12 @@
 <% if @player2 && @player2 != "" %>
 
-  <header>Set Ships</header>
+  <h1><a href="/game/player1">Start Game</a></h1>
 
 <% elsif @player2 == "" %>
 
   <p>try again</p>
   <form action="/setup" method="post">
-    <input type="text" name="player2" placeholder="give a name">
+    <input type="text" name="player2" placeholder="Player 2?">
     <input type="submit" value="Submit">
   </form>
 
