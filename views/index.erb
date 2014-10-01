@@ -1,8 +1,16 @@
-<% if @player1 %>
+<% if @player1 && @player1 != "" %>
 
   <h2><%= @player1 %> declares war on</h2>
-  <form action="/" method="post">
+  <form action="/setup" method="post">
     <input type="text" name="player2">
+    <input type="submit" value="Submit">
+  </form>
+
+<% elsif @player1 == "" %>
+
+  <p>try again</p>
+  <form action="/" method="post">
+    <input type="text" name="player1" placeholder="give a name">
     <input type="submit" value="Submit">
   </form>
 
@@ -14,8 +22,3 @@
   </form>
 
 <% end %>
-
-
-
-
-
