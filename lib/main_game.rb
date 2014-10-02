@@ -21,6 +21,10 @@ class Battleships < Sinatra::Base
     coord = ("A" + (index + 1).to_s).to_sym
     BOARD1.place(ship, coord, :vertically)
   end
+  FLEET2.each_with_index do |ship, index| 
+    coord = ("A" + (index + 1).to_s).to_sym
+    BOARD2.place(ship, coord, :vertically)
+  end
 
 
   
@@ -52,12 +56,16 @@ class Battleships < Sinatra::Base
     if params[:player] == "player1"
       @name = GAME.player1.name
       @board = GAME.player1.board.grid
+      @enemy = "player2"
     else
       @name = GAME.player2.name
       @board = GAME.player2.board.grid
+      @enemy = "player1"
     end
     erb :game
   end
+
+  
 
 	run! if app_file == $0
 end
