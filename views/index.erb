@@ -1,23 +1,21 @@
-<% if @player1 && @player1 != "" %>
+<% if GAME.player1 && GAME.player1 != ""%>
 
-  <h2><%= @player1 %> declares war on</h2>
-  <form action="/setup" method="post">
-    <input type="text" name="player2">
-    <input type="submit" value="Submit">
-  </form>
+  <meta http-equiv="refresh" content="3">
+  <h2><%= @player %> has declared war.</h2>
+  <h3>Waiting for a retaliation</h3>
 
-<% elsif @player1 == "" %>
+<% elsif GAME.player1 == "" %>
 
-  <p>try again</p>
   <form action="/" method="post">
-    <input type="text" name="player1" placeholder="Player 1?">
+    Enter your name to join a game!
+    <input type="text" name="player" placeholder="Player Name?">
     <input type="submit" value="Submit">
   </form>
 
 <% else %>
-
+ Enter your name to join a game!
   <form action="/" method="post">
-    <input type="text" name="player1">
+    <input type="text" name="player">
     <input type="submit" value="Submit">
   </form>
 

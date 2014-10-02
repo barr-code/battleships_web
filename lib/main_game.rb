@@ -25,25 +25,27 @@ class Battleships < Sinatra::Base
 
   
 	get '/' do
+    redirect '/setup' if GAME.player1 && GAME.player2
     session[:game] = GAME
  		erb :index
 	end
 
 	post '/' do
-    @player1 = params[:player1]
-    GAME.add_player(Player.new(params[:player1]))
-    puts GAME.inspect
-    erb :index
+    if params[:player] == ""
+      redirect('/') 
+    else  
+      GAME.add_player(Player.new(params[:player]))
+      @player = params[:player]
+      puts GAME.inspect
+      erb :index
+    end
 	end
 
-  post '/setup' do
+  get '/setup' do
     erb :setup
   end
 
-  get '/game/player1' do
-    puts GAME.inspect
-    puts session.inspect
-    @board = PLAYER1.board.grid
+  get '/game' do
     erb :game
   end
 

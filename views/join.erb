@@ -1,0 +1,19 @@
+<h2><%= @player1 %>declares war! Retaliate?</h2>
+
+<% if @player2 && @player2 != "" %>
+
+  <h2><a href="/setup"><%= @player2 %> Deploy your ships!</a></h2>
+
+<% elsif @player2 == "" %>
+
+  <form action="/join" method="post">
+    <input type="text" name="player2" placeholder="Player 2?">
+    <input type="submit" value="Submit">
+  </form>
+
+<% else %>  
+  <form action="/join" method="post">
+    <input type="text" name="player2">
+    <input type="submit" value="Submit">
+  </form>
+<% end %>
