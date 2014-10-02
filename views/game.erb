@@ -1,15 +1,10 @@
 <% 
 def display_cell(coord,cell)
-  if cell.content.nil?
-    cell.hit? ? "X" : "~"
-    if cell.hit?
-      'X'
-    else
-      "<a href='/shot?enemy=#{@enemy}&coord=#{coord}~</a>"
-    end
-  else
-    cell.content.hits == cell.content.size ? " " : "#"
-  end   
+  if cell.content.class.name == "Water"
+    cell.content.hit? == nil ? "<a href='/shot?enemy=#{@enemy}&coord=#{coord}'>~</a>" : "X"
+  else 
+    cell.content.hits == cell.content.size ? "#" : "<a href='/shot?enemy=#{@enemy}&coord=#{coord}'>~</a>"
+  end
 end %>
 
 <h1><%= @name %></h1>
