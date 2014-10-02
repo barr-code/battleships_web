@@ -7,8 +7,7 @@ def display_cell(cell)
   end   
 end %>
 
-<h1>Player 1 Board</h1>
-
+<h1><%= @name %></h1>
 <table class="board"><tr><td></td><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>J</td><td>H</td><td>I</td><td>J</td></tr>
   <% row = 0 %>
   <% @board.each do |coord, cell| %>
@@ -26,4 +25,4 @@ end %>
 
     <% end %>
   <% end %>
-</table>    
+</table>

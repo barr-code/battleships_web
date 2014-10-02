@@ -34,7 +34,7 @@ class Battleships < Sinatra::Base
     if params[:player] == ""
       redirect('/') 
     else  
-      GAME.add_player(Player.new(params[:player]))
+      GAME.add_player(Player.new(:name => params[:player],:session_id => session[:session_id]))
       @player = params[:player]
       puts GAME.inspect
       erb :index
@@ -42,10 +42,20 @@ class Battleships < Sinatra::Base
 	end
 
   get '/setup' do
+    GAME.player1.board = BOARD1
+    GAME.player2.board = BOARD2
+    GAME.player1.session_id == session[:session_id] ? redirect('/game?player=player1') : redirect('/game?player=player2')
     erb :setup
   end
 
   get '/game' do
+    if params[:player] == "player1"
+      @name = GAME.player1.name
+      @board = GAME.player1.board.grid
+    else
+      @name = GAME.player2.name
+      @board = GAME.player2.board.grid
+    end
     erb :game
   end
 
