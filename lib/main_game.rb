@@ -7,11 +7,12 @@ require_relative 'cell'
 require_relative 'water'
 
 class Battleships < Sinatra::Base 
-	
-  attr_accessor :game, :player1
-	GAME = Game.new
-  PLAYER1 = Player.new
-  PLAYER2 = Player.new
+
+  set :views, Proc.new {File.join(root, '..', 'views')}
+  set :public_folder, 'public'
+  enable :sessions
+
+  GAME = Game.new
   FLEET1 = [Ship.aircraft_carrier, Ship.battleship, Ship.destroyer, Ship.submarine, Ship.patrol_boat ]
   FLEET2 = [Ship.aircraft_carrier, Ship.battleship, Ship.destroyer, Ship.submarine, Ship.patrol_boat ]
   BOARD1 = Board.new(Cell)
@@ -21,30 +22,27 @@ class Battleships < Sinatra::Base
     BOARD1.place(ship, coord, :vertically)
   end
 
-  set :views, Proc.new {File.join(root, '..', 'views')}
-  set :public_folder, 'public'
+
   
 	get '/' do
+    session[:game] = GAME
  		erb :index
 	end
 
 	post '/' do
     @player1 = params[:player1]
-    GAME.add_player(PLAYER1)
-    GAME.player1.name = params[:player1]
-    PLAYER1.board = BOARD1
+    GAME.add_player(Player.new(params[:player1]))
+    puts GAME.inspect
     erb :index
 	end
 
   post '/setup' do
-    @player2 = params[:player2]
-    GAME.add_player(PLAYER2)
-    GAME.player2.name = params[:player2]
-    PLAYER2.board = BOARD2
     erb :setup
   end
 
   get '/game/player1' do
+    puts GAME.inspect
+    puts session.inspect
     @board = PLAYER1.board.grid
     erb :game
   end

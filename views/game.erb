@@ -1,12 +1,29 @@
+<% 
+def display_cell(cell)
+  if cell.content.nil?
+    cell.hit? ? "X" : "~"
+  else
+    cell.content.hits == cell.content.size ? " " : "#"
+  end   
+end %>
+
 <h1>Player 1 Board</h1>
-<table>
+
+<table class="board"><tr><td></td><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>J</td><td>H</td><td>I</td><td>J</td></tr>
+  <% row = 0 %>
   <% @board.each do |coord, cell| %>
     <% if coord.slice(1..coord.length) == "1" %>
-      <tr><td><%= cell.hit? ? "*" : "~" %></td>
+
+      <tr><td><%= row+=1 %></td><td><%= display_cell cell %></td>
+
     <% elsif coord.slice(1..coord.length) == "10" %>
-      <td><%= cell.hit? ? "*" : "~" %></td></tr>
+
+      <td><%= display_cell cell  %></td></tr>
+
     <% else %>
-      <td><%= cell.hit? ? "*" : "~" %></td> 
+
+      <td><%= display_cell cell  %></td> 
+
     <% end %>
   <% end %>
-</table>     
+</table>    

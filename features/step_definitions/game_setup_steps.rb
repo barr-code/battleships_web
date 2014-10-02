@@ -1,11 +1,12 @@
-Given(/^I am player1$/) do
-  visit '/setup'
+Given(/^"(.*?)" and "(.*?)" exist$/) do |player1, player2|
+  visit '/'
+  fill_in("player1", with: "Bob")
 end
 
-When(/^I follow "(.*?)"$/) do |start|
-  click_on(start)
+When(/^I follow "(.*?)" on the "(.*?)" page$/) do |link, page|
+  click_link("Start Game")
 end
 
-Then(/^I see my board$/) do
-  pending # express the regexp above with the code you wish you had
+Then(/^I would see "(.*?)" on the "(.*?)" page$/) do |title, game_page  |
+  expect(page).to have_content("Player 1 Shoot!")
 end

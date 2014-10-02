@@ -13,7 +13,7 @@ Scenario: Naming Player 2
   Given "player1" has been created
   When I submit "Derek" in "player2"
   And click on "Submit"
-  Then I go to a new "page" and see "Set Ships"
+  Then I go to a new "page" and see "Start Game"
 
 Scenario: No player1 name!
   Given some twit forgets to add their name in "player1"

@@ -21,7 +21,7 @@ Given(/^"(.*?)" has been created$/) do |player1|
 end
 
 Then(/^I go to a new "(.*?)" and see "(.*?)"$/) do |route, pagetitle|
-  expect(page).to have_content('Set Ships')
+  expect(page).to have_content('Start Game')
 end
 
 Given(/^some twit forgets to add their name in "(.*?)"$/) do |player|
