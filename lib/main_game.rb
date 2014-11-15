@@ -21,9 +21,13 @@ class Battleships < Sinatra::Base
     coord = ("A" + (index + 1).to_s).to_sym
     BOARD1.place(ship, coord, :vertically)
   end
+  FLEET2.each_with_index do |ship, index| 
+    coord = ("A" + (index + 1).to_s).to_sym
+    BOARD2.place(ship, coord, :vertically)
+  end
+  BOARD1.grid.each {|coord, cell| cell.content = Water.new if cell.content.nil? }
+  BOARD2.grid.each {|coord, cell| cell.content = Water.new if cell.content.nil? }
 
-
-  
 	get '/' do
     redirect '/setup' if GAME.player1 && GAME.player2
     session[:game] = GAME
@@ -36,7 +40,6 @@ class Battleships < Sinatra::Base
     else  
       GAME.add_player(Player.new(:name => params[:player],:session_id => session[:session_id]))
       @player = params[:player]
-      puts GAME.inspect
       erb :index
     end
 	end
@@ -51,13 +54,24 @@ class Battleships < Sinatra::Base
   get '/game' do
     if params[:player] == "player1"
       @name = GAME.player1.name
-      @board = GAME.player1.board.grid
+      @board = GAME.player2.board.grid
+      @enemy = "player2"
     else
       @name = GAME.player2.name
-      @board = GAME.player2.board.grid
+      @board = GAME.player1.board.grid
+      @enemy = "player1"
     end
     erb :game
   end
+
+  get '/shot' do
+    params[:enemy] == "player1" ? enemy = "player2" : enemy = "player1"
+    coord = params[:coord]
+    GAME.shoots(coord.to_sym)
+    redirect "/game?player=#{enemy}"
+  end
+
+  
 
 	run! if app_file == $0
 end

@@ -1,10 +1,10 @@
 <% 
-def display_cell(cell)
-  if cell.content.nil?
-    cell.hit? ? "X" : "~"
-  else
-    cell.content.hits == cell.content.size ? " " : "#"
-  end   
+def display_cell(coord,cell)
+  if cell.content.class.name == "Water"
+    cell.content.hit? == nil ? "<a href='/shot?enemy=#{@enemy}&coord=#{coord}'>~</a>" : "X"
+  else 
+    cell.content.hits == cell.content.size ? "#" : "<a href='/shot?enemy=#{@enemy}&coord=#{coord}'>~</a>"
+  end
 end %>
 
 <h1><%= @name %></h1>
@@ -13,15 +13,15 @@ end %>
   <% @board.each do |coord, cell| %>
     <% if coord.slice(1..coord.length) == "1" %>
 
-      <tr><td><%= row+=1 %></td><td><%= display_cell cell %></td>
+      <tr><td><%= row+=1 %></td><td><%= display_cell(coord,cell) %></td>
 
     <% elsif coord.slice(1..coord.length) == "10" %>
 
-      <td><%= display_cell cell  %></td></tr>
+      <td><%= display_cell(coord,cell)  %></td></tr>
 
     <% else %>
 
-      <td><%= display_cell cell  %></td> 
+      <td><%= display_cell(coord,cell)  %></td> 
 
     <% end %>
   <% end %>
